@@ -1,0 +1,1353 @@
+@import "variables";
+
+
+@font-face {
+    font-family: "Galien"; 
+    src: url("../fonts/Galien/Galien_Poster.otf") format("opentype"),
+    url("../fonts/Galien/Galien_Poster.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gilroy_Regular";
+    src: url("../fonts/Gilroy/Gilroy_Regular.eot"), format("opentype"); 
+    src: url("../fonts/Gilroy/Gilroy_Regular.woff2") format("woff2"),
+    url("../fonts/Gilroy/Gilroy_Regular.woff") format("woff"),        
+    url("../fonts/Gilroy/Gilroy_Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Gilroy_Semibold"; 
+    src: url("../fonts/Gilroy/Gilroy_Semibold.woff2") format("woff2"),
+    url("../fonts/Gilroy/Gilroy_Semibold.woff") format("woff"),        
+    url("../fonts/Gilroy/Gilroy_Semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+body, html {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth; /* плавная прокрутка */
+    font-size: 16px; /* 1rem */
+    
+    @include breakpoint (md) {
+        font-size: 14px; /* 1rem */
+    }
+}
+
+body {
+    font-family: "Gilroy_Regular", sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+}
+
+.wrapper_header {
+    max-width: 1200px;
+
+    @include breakpoint (xl) {
+        max-width: 1024px;
+    }
+}
+
+.wrapper, 
+.wrapper_header {
+    box-sizing: border-box;
+    
+    @include breakpoint (lg) {
+        max-width: 768px;
+    }
+    
+    @include breakpoint (md) {
+        max-width: 700px;
+    }
+    
+    @include breakpoint (sm) {
+        max-width: 420px;
+    }
+    
+    @include breakpoint (xs) {
+        max-width: 290px;
+    }
+}
+
+.wrapper_footer {
+    padding-left: 4%;
+    padding-right: 4%;
+    
+    @include breakpoint (xl) {
+        padding-left: 12%;
+        padding-right: 12%;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+    line-height: 1.625rem;
+    opacity: 0.6;
+}
+
+h1, h3, p {
+    color: $blue_01;
+}
+
+h2, h3, p, a {
+    letter-spacing: 0.05em;
+}
+
+h2, h3 {
+    font-family: "Gilroy_Semibold", sans-serif;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2.25rem;
+    line-height: 2.875rem;
+    color: #fff;
+    
+    @include breakpoint (lg) {
+        font-size: 1.75rem;
+        line-height: 2.5rem;
+    }
+    
+    @include breakpoint (md) {
+        font-size: 1.5rem;
+        line-height: 2.25rem;
+    }
+    
+    @include breakpoint (xs) {
+        font-size: 1.25rem;
+        line-height: 2rem;
+    }
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.875rem;
+    color: $blue_01;
+    
+    @include breakpoint (md) {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+    }
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.text_align_center {
+    text-align: center;
+}
+
+
+/* ↓↓↓ Header ↓↓↓ */
+
+.main {
+    padding-bottom: 55px;
+    
+    @include breakpoint (md) {
+        padding-bottom: 30px;
+    }
+    
+    &::before {
+        display: block;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(0deg, #98C3E8 8.84%, rgba(152, 195, 232, 0) 31.12%);
+        opacity: 0.2;
+        z-index: -1;
+    }
+    
+    .navigation {
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        
+        .nav_links {
+            display: none;
+            
+            &_item {
+
+                a {
+                    text-decoration: none;
+                    text-transform: capitalize;
+                    color: $blue_01;
+                    margin-left: 30px;
+                    transition: 0.7s;
+                    
+                    &:hover {
+                        opacity: 0.6;
+                        border-bottom: 1px solid $blue_01;
+                        padding-bottom: 10px;
+                    }
+                    
+                    @include breakpoint (xs) {
+                        margin-left: 0;
+                    }
+                }
+                
+                @include breakpoint (md) {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        
+        .nav_links_chngs {
+            display: flex;
+            justify-content: space-between; 
+            
+            @include breakpoint (md) {
+                max-width: 240px;
+                flex-wrap: wrap;
+                justify-content: center; 
+            }
+            
+            @include breakpoint (xs) {
+                flex-direction: column;
+            }
+        }
+    }
+    
+    &_info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        @include breakpoint (md) {
+            flex-direction: column;
+            position: relative;
+        }
+                
+        &_text {
+            max-width: 520px;
+            position: relative;
+            left: 70px;
+            
+            @include breakpoint (xl) {
+                left: 20px;
+                max-width: 450px;
+            }
+            
+            @include breakpoint (lg) {
+                max-width: 400px;
+            }
+            
+            @include breakpoint (md) {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            h1 {
+                font-family: "Galien", serif;
+                font-size: 4rem;
+                line-height: 4.625rem;
+                letter-spacing: 0.04em;
+                
+                @include breakpoint (xl) {
+                    font-size: 3.5rem;
+                    line-height: 4rem;
+                }
+                
+                @include breakpoint (lg) {
+                    font-size: 3rem;
+                    line-height: 3.5rem;
+                    margin-top: 30px;
+                }
+                
+                @include breakpoint (md) {
+                    font-size: 2.5rem;
+                    line-height: 3rem;
+                    margin-top: 10px;
+                }
+            }
+            
+            p {
+                max-width: 425px;
+                margin-top: 2rem;
+                margin-bottom: 4.375rem;
+                
+                @include breakpoint (lg) {
+                    margin-bottom: 3rem;
+                }
+                
+                @include breakpoint (md) {
+                    margin-bottom: 16rem;
+                }
+                
+                @include breakpoint (xs) {
+                    margin-bottom: 2rem;
+                }
+            }
+        }
+        
+        &_img {
+            background-image: url(../images/header/header_illustration.svg);
+            width: 688px;
+            height: 624px;
+            display: block;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            
+            @include breakpoint (xl) {
+                position: relative;
+                left: -30px;
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                background-position: center center;
+            }
+            
+            @include breakpoint (lg) {
+                
+                &_adaptive {
+                    background-image: url(../images/header/header_illustration_adaptive.svg);
+                    display: block;
+                    width: 280px;
+                    height: 190px;
+                    
+                    @include breakpoint (md) {
+                        position: absolute;
+                        top: 220px;
+                        left: 30%;
+                    } 
+                    
+                    @include breakpoint (sm) {
+                        position: absolute;
+                        top: 220px;
+                        left: 18%;
+                    } 
+                    
+                    @include breakpoint (xs) {
+                        display: none;
+                    } 
+                }
+            }
+        }       
+    }
+}
+
+.logo_img {
+    background-image: url(../images/header/logo.svg);
+    display: block;
+    width: 48px;
+    height: 32px;
+}
+
+.bttn {
+    cursor: pointer;
+    padding: 15px 48px;
+    line-height: 1.625rem;
+    background-color: $blue_04;
+    color: #fff;
+    box-shadow: 5px 10px 20px rgba(53, 110, 173, 0.2);
+    border-radius: 10px;
+    border: none;
+    letter-spacing: 0.04em;
+    
+    @include breakpoint (lg) {
+        padding: 15px 30px;
+    }
+}
+
+.main_info_bttn {
+    
+    @include breakpoint (md) {
+        text-align: center;
+    }
+}
+
+/* ↑↑↑ Header ↑↑↑ */
+
+
+
+/* ↓↓↓ Our Work Section ↓↓↓ */
+
+.our_work {
+    margin-top: 180px;
+    
+    @include breakpoint (xl) {
+        margin-top: 100px;
+    }
+    
+    @include breakpoint (md) {
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    
+    &_title_h2 {
+        color: $blue_02;
+        width: 360px;
+        position: absolute;
+        
+        @include breakpoint (lg) {
+            max-width: 300px;
+        }
+        
+        @include breakpoint (md) {
+            position: inherit;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        @include breakpoint (xs) {
+            max-width: 200px;
+        }
+    }
+    
+    &_box {
+        display: grid;
+        grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr;
+        grid-gap: 100px;
+        
+        @include breakpoint (lg) {
+            grid-gap: 30px;
+        }
+        
+        @include breakpoint (md) {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        &_item {
+        padding: 3rem;
+        width: calc(380px - 6rem);
+        box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+        border-radius: 10px;
+            
+        @include breakpoint (lg) {
+            padding: 2rem;
+            max-width: 250px;
+        }
+            
+        @include breakpoint (md) {
+            margin: 0 auto;        
+        }
+            
+        @include breakpoint (xs) {
+            padding: 1rem;
+            max-width: 200px;       
+        }
+                    
+            &_title {
+                width: 285px;
+                margin: 3.5rem 0 1rem;
+                
+                @include breakpoint (lg) {
+                    max-width: 250px;
+                }
+                
+                @include breakpoint (sm) {
+                    margin: 1.5rem 0 1rem;
+                }
+                
+                @include breakpoint (xs) {
+                    max-width: 200px;
+                }
+            }
+        
+            #our_work_box_item_img_01 {
+                background-image: url(../images/our_work/img_01_famous.svg);
+                width: 192px;
+                height: 132px;
+            }
+
+            #our_work_box_item_img_02 {
+                background-image: url(../images/our_work/img_02_digital_prod.svg);
+                width: 171px;
+                height: 132px;
+                
+                @include breakpoint (lg) {
+                    margin-left: 1.25rem;
+                }
+                
+                @include breakpoint (xs) {
+                    margin-left: 0;
+                }
+            }
+
+            #our_work_box_item_img_03 {
+                background-image: url(../images/our_work/img_03_technologies.svg);
+                width: 255px;
+                height: 208px;
+                
+                @include breakpoint (xs) {
+                    width: 204px;
+                    height: 167px;
+                }
+            }
+            
+            &_img {
+                display: block;
+                margin-left: 1.625rem; /* 26px */
+                
+                @include breakpoint (lg) {
+                    margin-left: 0;
+                }
+                
+                @include breakpoint (xs) {
+                    background-size: 80% 80%;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: contain;
+                }
+            }
+                        
+            &_text {
+                margin-bottom: 2rem;    
+            }
+            
+            &_link {
+                text-decoration: none;
+                position: relative;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-size: 0.875rem;
+                line-height: 1.875rem;
+                letter-spacing: 0.05em;
+                color: $blue_04;
+                font-family: "Gilroy_Semibold";
+                
+                &::after {
+                    content: "";
+                    display: block;
+                    background-image: url(../images/our_work/arrow_link.svg);
+                    width: 16px;
+                    height: 16px;
+                    position: absolute;
+                    right: 60%;
+                    top: calc(0);
+                    transition: 0.7s;
+                    
+                    @include breakpoint (xs) {
+                        right: 50%;
+                    }
+                }
+                
+                &:hover::after {
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+    
+    #our_work_box_item_01 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 4;
+        max-height: 430px;
+        
+        @include breakpoint (lg) {
+            max-height: 490px;
+        }
+    }
+    
+    #our_work_box_item_02 {
+        grid-column: 2 / 3;
+        grid-row: 3 / 5;
+        max-height: 430px;
+        
+        @include breakpoint (lg) {
+            max-height: 490px;
+        }
+    }
+    
+    #our_work_box_item_03 {
+        grid-column: 2 / 3;
+        grid-row: 1 / 3;
+    }
+}
+
+/* ↑↑↑ Our Work Section ↑↑↑ */
+
+
+
+/* ↓↓↓ Our Clients Section ↓↓↓ */
+
+.our_clients {
+    background-color: $blue_04;
+    padding: 6rem 0 7.8125rem;
+    border-radius: 200px 0px 0px 0px;
+    z-index: -1;
+    
+    @include breakpoint (xl) {
+        padding: 5rem 0 5rem;
+    }
+    
+    @include breakpoint (md) {
+        padding: 4rem 0 4rem;
+    }
+        
+    &_box_info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 110px;
+        
+        @include breakpoint (xl) {
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        
+        @include breakpoint (lg) {
+            justify-content: space-between;
+            margin-bottom: 80px;
+        }
+        
+        @include breakpoint (xs) {
+            flex-direction: column;
+            text-align: right;
+            margin-bottom: 40px;
+        }
+        
+        &_title {
+            max-width: 230px;
+            
+            @include breakpoint (lg) {
+                max-width: 180px;
+                margin-left: 120px;
+            }
+            
+            @include breakpoint (md) {
+                margin-left: 80px;
+            }
+            
+            @include breakpoint (xs) {
+                margin-bottom: 20px;
+            }
+        }
+        
+        &_text {
+            color: #fff;
+            margin-left: 100px;
+            max-width: 540px;
+            
+            @include breakpoint (xl) {
+                margin-left: 75px;
+                max-width: 380px;
+            }
+            
+            @include breakpoint (lg) {
+                margin-left: 30px;
+                max-width: 380px;
+            }
+        }
+    }
+    
+    &_box_logo {
+        display: grid;
+        grid-template: repeat(2, 128px) / 1fr 1fr 1fr 1fr;
+        grid-gap: 0;
+        border:1px solid $blue_04;
+        
+        @include breakpoint (lg) {
+            grid-template: repeat(4, 128px) / 1fr 1fr;
+        }
+        
+        @include breakpoint (xs) {
+            grid-template: repeat(2, 128px) / 1fr 1fr;
+        }
+        
+        &_item {
+            position: relative;
+            border: 1px solid #fff;
+                        
+            a {
+                text-decoration: none;
+                color: #F2F2F2;
+                letter-spacing: 0.02em;
+                font-size: 1.25rem;
+                line-height: 2.875rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                font-family: "Gilroy_Semibold";
+
+                &:hover {
+                    opacity: 0.6;
+                }
+                
+                @include breakpoint (lg) {
+                    font-size: 1rem;
+                    line-height: 2.25rem;
+                }
+            }
+            
+            &:hover::before {
+                display: block;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: $blue_01;
+                opacity: 0.2;
+                z-index: 0;
+            }
+        }
+        
+        #our_clients_box_logo_item_01,
+        #our_clients_box_logo_item_02, 
+        #our_clients_box_logo_item_03, 
+        #our_clients_box_logo_item_04 {
+            border-top: none;
+            border-bottom: none;
+            border-left: none;
+        }
+        
+        #our_clients_box_logo_item_05,
+        #our_clients_box_logo_item_06, 
+        #our_clients_box_logo_item_07, 
+        #more_clients {
+            border-left: none;
+            border-bottom: none;
+            
+            @include breakpoint (xs) {
+                border-top: none;
+            }
+        }
+        
+        #our_clients_box_logo_item_01,
+        #our_clients_box_logo_item_05 {
+            border-left: none;
+        }
+        
+        #our_clients_box_logo_item_04,
+        #more_clients {
+            border-right: none;
+        }
+        
+        #our_clients_box_logo_item_01,
+        #our_clients_box_logo_item_02 {
+            
+            @include breakpoint (lg) {
+                border-bottom: 1px solid #fff;
+            }
+        }
+        
+        #our_clients_box_logo_item_02,
+        #our_clients_box_logo_item_06 {
+            
+            @include breakpoint (lg) {
+                border-right: none;
+            }
+        }
+        
+        #our_clients_box_logo_item_04, 
+        #our_clients_box_logo_item_05,
+        #our_clients_box_logo_item_06, 
+        #our_clients_box_logo_item_07 {
+            
+            @include breakpoint (xs) {
+                display: none;
+            }
+        }
+        
+    }
+}
+
+
+/* ↑↑↑ Our Clients Section ↑↑↑ */
+
+
+
+/* ↓↓↓ Contact Us Page ↓↓↓ */
+
+.contact_us_main {
+    
+    &::before {
+        display: none;
+    }
+}
+
+
+
+/* ↓↓↓ Contact Us Banner ↓↓↓ */
+
+.contact_us_banner {
+    background-image: url(../images/contact_us/contact_us_header/contact_us_banner_bckgrnd.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px 0;
+    text-align: center;
+    
+    @include breakpoint (sm) {
+        padding: 20px 0;
+    }
+    
+    &_title_h2 {
+        font-size: 2.75rem;
+        line-height: 4.625rem;
+        letter-spacing: 0.04em;
+        margin-bottom: 1rem;
+        
+        @include breakpoint (md) {
+            font-size: 2.25rem;
+            line-height: 4.25rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        @include breakpoint (sm) {
+            font-size: 2rem;
+            line-height: 4rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+    
+    &_text {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+        letter-spacing: 0.04em;
+        color: #fff;
+        opacity: 0.6;
+        
+        @include breakpoint (md) {
+            font-size: 1rem;
+            line-height: 1.5rem;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+    }
+}
+
+
+/* ↑↑↑ Contact Us Banner ↑↑↑ */
+
+
+
+/* ↓↓↓ Contacts & Messages ↓↓↓ */
+
+.contacts {
+    margin-top: 60px;
+    
+    @include breakpoint (sm) {
+        margin-top: 40px;
+    }
+    
+    @include breakpoint (xs) {
+        margin-top: 20px;
+    }
+    
+    &_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        #contacts_box_item_phone_site {
+            max-width: 300px;   
+        }
+        
+        @include breakpoint (sm) {
+            flex-direction: column;
+        }
+
+        &_item {
+            
+            &_img {
+                background-image: url(../images/contact_us/contact_us_img.svg);
+                display: block;
+                width: 301px;
+                height: 181px;
+                margin-bottom: 70px;
+                
+                @include breakpoint (sm) {
+                    margin-bottom: 40px;
+                }
+                
+                @include breakpoint (xs) {
+                    margin-bottom: 20px;
+                }
+            }
+            
+            &_elem {
+                margin-bottom: 2.5rem;
+                
+                &_title_h3 {
+                    text-transform: uppercase;
+                    margin-bottom: 1.5rem;
+                }
+                
+                &_img {
+                    display: block;
+                    margin-right: 18px;
+                }
+                
+                &_line {
+                    opacity: 0.6;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                    
+                    &:hover {
+                        opacity: 1;
+                    }
+                    
+                    a {
+                        color: $blue_01;
+                        text-decoration: none;
+                    }
+                }
+                
+                #contacts_box_item_elem_img_phone {
+                    background-image: url(../images/contact_us/icons/icon_01_phone.svg);
+                    width: 18px;
+                    height: 18px;
+                }
+                
+                #contacts_box_item_elem_img_web {
+                    background-image: url(../images/contact_us/icons/icon_02_web.svg);
+                    width: 20px;
+                    height: 20px;
+                }
+                
+                #contacts_box_item_elem_img_email {
+                    background-image: url(../images/contact_us/icons/icon_03_email.svg);
+                    width: 20px;
+                    height: 16px;
+                }
+            }
+            
+            &_form {
+                display: flex;
+                flex-direction: column;
+                
+                input, textarea {
+                    width: 430px;
+                    padding: 21px 42px;
+                    border: 1px solid #356EAD;
+                    box-sizing: border-box;
+                    border-radius: 10px;
+                    margin-bottom: 2rem;
+                    margin-top: 0.5rem;
+                    opacity: 0.4;
+                    
+                    @include breakpoint (lg) {
+                        max-width: 350px;
+                        padding: 20px 20px;
+                    }
+                    
+                    @include breakpoint (md) {
+                        max-width: 300px;
+                    }
+                    
+                    @include breakpoint (xs) {
+                        max-width: 250px;
+                    }
+                }
+                
+                textarea {
+                    height: 144px;
+                }
+                
+                .message_bttn {
+                    width: 430px;
+                    padding-top: 23px;
+                    padding-bottom: 23px;
+                    text-transform: uppercase;
+                    opacity: 1;
+                }
+                
+                input:focus, textarea:focus, message_bttn:focus {
+                    opacity: 1;
+                    outline: none;
+                    border: 1px solid #356EAD;
+                }
+            }
+        }
+        
+        #contacts_box_item_message {
+            max-width: calc(540px - 7rem); 
+            padding: 3.5rem;
+            box-shadow: 5px 10px 50px rgba(16, 112, 177, 0.2);
+            border-radius: 10px;
+            
+            @include breakpoint (lg) {
+                padding: 2rem;
+                max-width: calc(540px - 4rem); 
+            }
+            
+            @include breakpoint (md) {
+                padding: 1.5rem;
+                max-width: calc(540px - 3rem); 
+            }
+            
+            @include breakpoint (sm) {
+                margin-top: 1rem;
+            }
+            
+            @include breakpoint (xs) {
+                padding: 1rem;
+                max-width: calc(540px - 2rem); 
+            }
+        }
+    }
+}
+
+
+/* ↑↑↑ Contacts & Messages ↑↑↑ */
+
+
+
+/* ↓↓↓ Map ↓↓↓ */
+
+.map {
+    margin: 6rem 0;
+    
+    @include breakpoint (md) {
+        margin: 3rem 0;
+    }
+    
+    .wrapper {
+        box-sizing: inherit;
+    }
+}
+
+.map_box {
+
+    @include breakpoint (lg) {
+        display: none;
+    }
+}
+
+#map_1024px,
+#map_768px, 
+#map_480px, 
+#map_320px {
+    display: none;
+}
+
+#map_1024px {
+    
+    @include breakpoint (lg) {
+        display: block;
+    }
+    
+    @include breakpoint (md) {
+        display: none;
+    }
+}
+
+#map_768px {
+    
+    @include breakpoint (md) {
+        display: block;
+    }
+    
+    @include breakpoint (sm) {
+        display: none;
+    }
+}
+
+#map_480px {
+    
+    @include breakpoint (sm) {
+        display: block;
+    }
+    
+    @include breakpoint (xs) {
+        display: none;
+    }
+}
+
+#map_320px {
+    
+    @include breakpoint (xs) {
+        display: block;
+    }
+}
+
+/* ↑↑↑ Map ↑↑↑ */
+
+
+
+/* ↓↓↓ Footer ↓↓↓ */
+
+.footer {
+    background-color: $blue_04;
+    
+    h3, p, a {
+        color: #fff;
+    }
+
+    &_incl {
+        background-color: $blue_02;
+        border-radius: 0px 200px 0px 0px;
+        margin-right: 6rem;
+        
+        @include breakpoint (lg) {
+            margin-right: 0;
+        }
+        
+        @include breakpoint (sm) {
+            border-top-right-radius: 100px;
+        }
+    }
+}
+
+.footer_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6rem 0;
+    
+    @include breakpoint (xl) {
+        justify-content: flex-start;
+    }
+    
+    @include breakpoint (md) {
+        padding: 3rem 0;
+    }
+    
+    @include breakpoint (xs) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    &_box {
+        
+        &_title {
+            max-width: 340px;
+            margin-bottom: 2rem;
+        }
+        
+        &_text {
+            max-width: 460px;
+        }
+        
+        @include breakpoint (lg) {
+            max-width: 300px;
+        }
+        
+        @include breakpoint (md) {
+            max-width: 200px;
+        }
+        
+        @include breakpoint (sm) {
+            max-width: 180px;
+        }
+    }
+    
+    .footer_bttn {
+        padding: 15px 74px;
+        
+        @include breakpoint (xl) {
+            margin-left: 80px;
+        }
+        
+        @include breakpoint (lg) {
+            margin-left: 40px;
+            padding: 15px 50px;
+        }
+        
+        @include breakpoint (md) {
+            margin-left: 30px;
+            padding: 12px 20px;
+        }
+        
+        @include breakpoint (sm) {
+            margin-left: 20px;
+            padding: 12px 20px;
+        }
+        
+        @include breakpoint (xs) {
+            margin-top: 30px;
+            margin-left: 0;
+        }
+    }
+}
+
+.footer_baseline {
+    background-color: #fff;
+    height: 1px;
+    opacity: 0.4;
+    right: 200px;
+    
+    @include breakpoint (lg) {
+        right: 100px;
+    }
+}
+
+.footer_bottom {
+    padding-top: 6rem;
+    
+    @include breakpoint (md) {
+        padding-top: 3rem;
+    }
+    
+    &_box {
+        display: flex;
+        justify-content: flex-start;
+        
+        @include breakpoint (md) {
+            flex-direction: column;
+        }
+        
+        &_item {
+            max-width: 300px;
+            
+            @include breakpoint (lg) {
+                max-width: 220px;
+            }
+            
+            @include breakpoint (md) {
+                margin-bottom: 20px;
+            }
+            
+            .logo {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                
+                &_img {
+                    background-image: url(../images/footer/logo_footer.svg);
+                    margin-right: 1rem;
+                }
+                
+                &_text {
+                    font-size: 1.75rem;
+                    line-height: 2.875rem;
+                    letter-spacing: 0.02em;
+                }
+            }
+            
+            a {
+                text-decoration: none;
+                
+                &:hover {
+                    opacity: 0.6;
+                }
+            }
+            
+            &_elem {
+                display: flex;
+                align-items: baseline;
+                margin: 1rem 0;
+                
+                span {
+                    margin-right: 1rem;
+                    
+                    line-height: 1.625rem;
+                    color: #fff;
+                }
+            }
+            
+            &:nth-child(2) {
+                margin-left: 100px;
+                margin-right: 100px;
+                
+                @include breakpoint (lg) {
+                    margin-left: 40px;
+                    margin-right: 40px;
+                }
+                
+                @include breakpoint (md) {
+                    margin-left: 0;
+                    margin-right: 0;
+                }
+            }
+            
+        }
+    }
+}
+
+.footer_bottom_text {
+    padding: 4rem 0;
+    
+    @include breakpoint (lg) {
+        padding: 2rem 0;
+    }
+    
+    @include breakpoint (md) {
+        padding: 0 0 1rem;
+    }
+    
+    @include breakpoint (xs) {
+        font-size: 0.75rem;
+    }
+}
+
+.contact_us_footer {
+    background-color: #fff;
+}
+
+/* ↑↑↑ Footer ↑↑↑ */
+
+
+
+/* ↓↓↓ Hamburger ↓↓↓ */
+
+.hamburger {
+    width: 30px;
+      
+    &-line {
+        width: 100%;
+        height: 4px;
+        background-color: #316099;
+        display: block;
+   
+        -webkit-transition: all 0.3s ease-in-out;
+        -o-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+
+    &:nth-child(2){
+        margin: 6px auto;
+        }
+    }
+  
+    &:hover{
+        cursor: pointer;
+    }
+
+    &.hamburger-active .hamburger-line:nth-child(2){
+        opacity: 0;
+    } 
+
+    &.hamburger-active .hamburger-line:nth-child(1){
+        -webkit-transform: translateY(10px) rotate(40deg);
+        -ms-transform: translateY(10px) rotate(40deg);
+        -o-transform: translateY(10px) rotate(40deg);
+        transform: translateY(10px) rotate(40deg);
+    }
+
+    &.hamburger-active .hamburger-line:nth-child(3){
+        -webkit-transform: translateY(-10px) rotate(-40deg);
+        -ms-transform: translateY(-10px) rotate(-40deg);
+        -o-transform: translateY(-10px) rotate(-40deg);
+        transform: translateY(-10px) rotate(-40deg);
+    }
+}
+
+/* ↑↑↑ Hamburger ↑↑↑ */

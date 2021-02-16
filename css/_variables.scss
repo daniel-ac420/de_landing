@@ -1,0 +1,36 @@
+$blue_01: #1F3F68; /* main title & text */
+$blue_02: #316099; /* h2 title */
+$blue_04: #5A98D0; /* bttns, links arrows */
+
+
+@mixin breakpoint($point) {
+    @if $point == xl {
+        @media (max-width: 1280px) {
+            @content;
+        }
+    }
+
+    @if $point == lg {
+        @media (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @if $point == md {
+        @media (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @if $point == sm {
+        @media (max-width: 480px) {
+            @content;
+        }
+    }
+
+    @if $point == xs {
+        @media (max-width: 320px) {
+            @content;
+        }
+    }
+}
